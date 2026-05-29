@@ -1,0 +1,16 @@
+=== FULL-POPULATION SIMULATION (real execution: commitments, Merkle, reconciliation) ===
+invoices: 80000 | payments: 76000 (95%) | counterparties: 400
+total notes on medium: 156000
+invoice note size: 461 bytes
+total note data: 36.9 MB (pre-batch)
+commitment generation (8 fields x 80000 invoices) wall time: 2.7 s
+Merkle batches (1000/batch): 156 roots; build wall time: 0.29 s
+reconciliation wall time over 156000 notes: 0.10 s
+injected faults: {'missing': 380, 'mismatch': 228, 'orphan': 160}
+reconciliation exceptions: {'MISSING_INVOICE': 0, 'MISSING_PAYMENT': 380, 'LINKAGE_MISMATCH': 228, 'ORPHAN': 160}
+detection: missing 380/380; mismatch 228/228; orphan 160/160
+total exceptions: 768 (0.49% of notes)
+clean covered population (full-population recalculation, no confirmation needed): 155392 (99.61%)
+--- crypto cost extrapolated from Table 11 measured medians (labelled as such) ---
+signing+verify all notes: ~7.1 min; linkage material: ~5.3 min
+anchor writes reduced from 156000 to 156 via batching (x1000 amortisation)
